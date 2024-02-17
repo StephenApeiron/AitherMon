@@ -80,11 +80,12 @@ public class PlayerController : MonoBehaviour
 
         if(target.GetComponent<PlayerController>().isDie)
         {
-            if(!isFinished)
-            {
-                anim.CrossFade("happy", .1f);
-                isFinished = true;
-            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                if (!isFinished)
+                {
+                    StartCoroutine(DelayPlayVictoryAnim());
+                    isFinished = true;
+                }
                 
         }
     }
@@ -262,5 +263,11 @@ public class PlayerController : MonoBehaviour
         
 
 
+    }
+
+    IEnumerator DelayPlayVictoryAnim()
+    {
+        yield return new WaitForSeconds(1.5f);
+        anim.CrossFade("happy", .1f);
     }
 }

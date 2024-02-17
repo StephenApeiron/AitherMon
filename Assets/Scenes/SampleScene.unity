@@ -1046,7 +1046,7 @@ MonoBehaviour:
   atk: 100
   def: 50
   res: 50
-  spd: 10
+  spd: 8
   curEnergy: 0
   maxEnergy: 100
 --- !u!95 &1111722587

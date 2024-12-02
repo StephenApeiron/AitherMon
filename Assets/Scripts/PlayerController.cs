@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateEnergy()
     {
-        if(!isDie)
+        if(!isDie && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
         {
             if (characterStatus.curEnergy < characterStatus.maxEnergy)
             {
@@ -147,13 +147,9 @@ public class PlayerController : MonoBehaviour
 
                 if (!target.GetComponent<PlayerController>().isDie) //<- dont attack died target
                 {
-                    if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle")) //<- make sure finish hurt animation than attack
-                    {
                         StartAttack();
                         print("diu");
                         characterStatus.curEnergy = 0;
-                    }
-
                 }
             }
 
